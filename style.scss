@@ -1,0 +1,521 @@
+$lightRedCTAtext: rgb(255, 82, 93);
+$veryLightRedCTAhoverBG: rgb(255, 122, 133);
+$veryDarkBlueHeadings: rgb(31, 63, 91);
+$whiteText: rgb(255, 255, 255);
+$grayishBlueFooterText: rgb(200, 200, 203);
+$veryDarkGrayishBlueBodyCopy: rgb(75, 88, 98);
+$veryDarkBlackBlueFooterBG: rgb(37, 37, 45);
+// mob nav
+$veryLightRed: rgb(255, 143, 112);
+$lightRed: rgb(255, 61, 84);
+// bg grandient - body
+$veryDarkGrayBlue: rgb(44, 45, 63);
+$veryDarkDesaturatedblue: rgb(63, 65, 100);
+$overpass: 'Overpass', sans-serif;
+$ubuntu: 'Ubuntu', sans-serif;
+$transition: 0.4s ease;
+
+/****************
+mixins
+****************/
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+/****************
+basic styles
+****************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    overflow-x: hidden;
+}
+body {
+    font-size: 16px;
+    font-family: $overpass;
+    overflow-x: hidden;
+}
+.body {
+    overflow-x: hidden;
+    background: linear-gradient(to right, $veryLightRed, $lightRed);
+    border-radius: 0 0 0 100px;
+}
+h1 {
+    color: $whiteText;
+    font-size: 56px;
+    line-height: 70px;
+}
+h2 {
+    color: $whiteText;
+    font-size: 36px;
+}
+h3 {
+    font-size: 36px;
+}
+h4 {
+    font-size: 26px;
+    line-height: 70px;
+}
+h5 {
+    color: $whiteText;
+    font-size: 26px;
+    line-height: 70px;
+}
+p {
+    line-height: 30px;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: $whiteText;
+    transition: $transition;
+    font-family: $ubuntu;
+    font-weight: 700;
+    margin-right: 5px;
+  }
+.container {
+    width: 78%;
+    margin: 0 auto;
+}
+button {
+    width: 146px;
+    height: 54px;
+    border: none;
+    transition: $transition;
+    cursor: pointer;
+    background: $whiteText;
+    color: $lightRed;
+    border-radius: 27px;
+    font-weight: 700;
+    font-size: 18px;
+}
+button:hover {
+    background: $veryLightRedCTAhoverBG;
+    color: $whiteText;
+}
+.btn-trans {
+    background: transparent;
+    color: $whiteText;
+    border: 2px solid $whiteText;
+}
+.btn-trans:hover {
+    background: $whiteText;
+    color: $veryLightRedCTAhoverBG;
+}
+.btn-red {
+    background: linear-gradient(to right, $veryLightRed, $lightRed);
+    color: $whiteText;
+}
+/*************
+header
+*************/
+header {
+    height: 67vh;
+    background-image: url(images/bg-pattern-intro.svg);
+    overflow: hidden;
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 163%;
+    border-radius: 0 0 0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header-text-center {
+        width: 78vw;
+        margin: 5vh 11vw 15vh 11vw;
+        text-align: center;
+        p {
+            color: $whiteText;
+            margin: 50px 0;
+        }
+
+        button {
+            margin: 0 20px 1vh 0;
+        }
+    }
+    nav {
+        width: 78vw;
+        margin: 5vh 11vw;
+        @include flex(row,space-between ,center );
+        .left-nav {
+            @include flex(row,space-between ,flex-end );
+            ul {
+                @include flex(row,space-between ,flex-end );
+                li {
+                    margin-left: 5vw;
+                }
+                li:hover a {
+                    text-decoration: underline;
+                }
+                li:hover {
+                    cursor: pointer;
+                }
+                li:hover .hidden-text-li {
+                    transition-delay: 0s;
+                    visibility: visible;
+                }
+            }
+        }
+        .hidden-text-li {
+            position: relative;
+            bottom: -35px;
+            left: -25px;
+            transition: all 0s ease 0.15s; /*delay 1s*/
+            visibility: hidden;
+            .hidden-text-a {
+                position: absolute;
+                padding: 25px 0;
+                background: $whiteText;
+                border-radius: 5px;
+                width: 168px;
+                box-shadow: 0 5px 20px 5px rgb(0 0 0 / 20%);
+                p {
+                   font-weight: 500; 
+                   font-family: $ubuntu;
+                   color: $veryDarkBlueHeadings;
+                   cursor: pointer;
+                   padding-left: 25px;
+                }
+                p:hover {
+                    font-weight: 700;
+                    color: black;
+                }
+            }
+        }
+        .right-nav {
+            a {
+                margin-right: 50px;
+            }
+        }
+        .hamburger {
+            display: none;
+        }
+    }
+    .hidden-nav {
+        display: none;
+    }
+}
+/*************
+Editor
+*************/
+.editor {
+    overflow: hidden;
+    main {
+        margin: 5vh auto;
+        h3 {
+            text-align: center;
+            position: relative;
+            bottom: -10vh
+        }
+        section {
+            @include flex(row, space-between ,center );
+            article {
+                width: 46%;
+            }
+        }
+
+    }
+    .laptop-mob {
+        display: none;
+    }
+    .editor-mob {
+        display: none;
+    }
+}
+/*************
+phones
+*************/
+.bg-phones {
+    background: $veryDarkGrayBlue;
+    border-radius: 0 100px 0 100px;
+    z-index: 1;
+    overflow: hidden;
+    .phones {
+        @include flex(row, space-between , start );
+        section {
+            width: 50%;
+            padding: 100px 0;
+            h2 {
+                z-index: 3;
+                position: relative;
+            }
+            p {
+                color: $whiteText;
+                z-index: 3;
+                position: relative;
+                padding: 15px 0;
+            }
+            img {
+                z-index: 2;
+                position: absolute;
+                left: -65%;
+            }
+        }
+        section:first-child {
+            position: relative;
+            top: -700px;
+        }
+
+    }
+}
+.phones-img {
+    position: relative;
+    top: -100px;
+    img {
+        position: absolute;
+        z-index: 55;
+    }
+}
+/*************
+laptop
+*************/
+.laptop {
+    @include flex(row, start , center );
+    padding: 125px 0;
+    section {
+        width: 50%;
+        img {
+            position: relative;
+            left: -272px;
+        }
+        p {
+            margin: 25px 0 50px 0;
+        }
+    }
+    section:last-child {
+        width: calc(78vw / 2);
+        padding-top: 75px;
+    }
+    .laptop-mob {
+        display: none;
+    }
+}
+/*************
+footer
+*************/
+footer {
+    background: $veryDarkBlackBlueFooterBG;
+    border-radius: 0 100px 0 0;
+    .container {
+        @include flex(row,start ,start );
+        section {
+            width: 25%;
+            padding: 15vh 0;
+        }
+        p {
+            color: $grayishBlueFooterText;
+            cursor: pointer;
+        }
+        p:hover {
+            text-decoration: underline;
+        }
+    }
+}
+/*******************
+responsive for ipad
+*******************/
+@media (max-width:1200px) {
+    header nav .left-nav ul {
+        display: none;
+    }
+    .right-nav {
+        display: none;
+    }
+    .hamburger {
+        display: block !important;
+        background-image: url(images/icon-hamburger.svg);
+        width: 36px;
+        height:26px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .hamburger.active {
+        background-image: url(images/icon-close.svg);
+        width: 36px;
+        height:36px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .hidden-nav.active {
+        z-index: 55;
+        width: 80vw;
+        height: auto;
+        background: $whiteText;
+        position: absolute;
+        top: 10vh;
+        left: 10vw;
+        border-radius: 10px;
+        @include flex(column, space-between , center);
+        padding: 75px;
+        .toggle {
+            @include flex(row, space-between , center );
+            h4 {
+                margin-right: 10px;
+            }
+            img {
+                width: 20px;
+                height: 14px;
+                margin-left: 10px;
+            }
+        }
+        .hidden-text-nav {
+            text-align: center;
+            background: $grayishBlueFooterText;
+            width: 100%;
+            padding: 15px 0;
+            border-radius: 10px;
+            display: none;
+            p {
+                font-weight: 600;
+                color: $veryDarkGrayishBlueBodyCopy;
+                font-size: 20px;
+                line-height: 40px;
+                letter-spacing: 2px;
+            }
+        }
+        .hidden-text-nav.active {
+            display: block;
+        }
+        #login {
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid $veryDarkGrayishBlueBodyCopy;
+            margin-top: 5vh;
+        }
+    }
+
+    .hidden-nav {
+        display: none;
+    }
+    .editor main {
+        h3 {
+            bottom: 0;
+            margin-top: 10vh;
+        }
+        section article {
+            text-align: center;
+            width: 100%;
+            margin: 5vh 0;
+            img {
+                width: 406px;
+                height: 331px;
+            }
+        }
+        article:first-child {
+            order: 2;
+        }
+        article:last-child {
+            order: 1;
+        }
+    }
+    .phones-img {
+        top: -8vh;
+        margin: 0 auto;
+        width: 61%;
+        display: flex;
+        justify-content: center;
+    }
+    .bg-phones .phones section img {
+        left: 48%;
+        transform: translateX(-50%);
+    }
+    .bg-phones .phones section {
+        width: 100%;
+        text-align: center;
+    }
+    .bg-phones {
+        margin-top: 5vh;
+    }
+    .laptop {
+        flex-direction: column;
+        section:last-child {
+            width: 90%;
+            text-align: center;
+        }
+    }
+    .laptop-desktop {
+        display: none;
+
+    }
+    .laptop-mob {
+        display: block;
+    }
+    .laptop section img {
+        left: 0;
+        margin: 0 auto;
+    }
+}
+/*******************
+responsive for mob
+*******************/
+@media (max-width:767px) {
+    .container {
+        width: 90%;
+    }
+    header {
+        .header-text {
+            margin: 15vh 5vw 10vh 5vw;
+            width: 90vw;
+        }
+        nav {
+            width: 90vw;
+            margin: 5vh 5vw;
+        }
+        button {
+            margin-bottom: 1vh !important;
+        }
+    }
+    .hidden-nav.active {
+        width: 90vw;
+        left: 5vw;
+    }
+    
+    .editor-desktop {
+        display: none;
+    }
+    .editor-mob {
+        display: block !important;
+        margin: 0 auto;
+        }
+    .laptop section {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    footer .container {
+        flex-direction: column;
+        padding: 10vh 0;
+        section {
+            width: 100%;
+            text-align: center;
+            padding: 0;
+        }
+    }
+}
+@media (max-width:520px) {
+    .phones-img img {
+        width: 170%;
+    }
+    .hidden-nav.active {
+        padding: 25px;
+    }
+}
+@media (max-width:420px) {
+    .editor .editor-mob {
+        width: 100%;
+        height: auto;
+    }
+    header .header-text-center {
+        margin: 0vh 11vw 15vh 11vw;
+    }
+}
